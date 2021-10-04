@@ -25,6 +25,8 @@ namespace ConsoleApp1
             string text_gameover = "Játék vége";
             string text_score = "Pontszám:";
             string text_name = "Írd be a neved a pontszám elmentéséhez!\nNeved: ";
+            string text_score_table = "Legmagasabb pontszámok: ";
+            string text_score_prompt = "Le szeretnéd menteni a pontszámodat?";
 
             string char_snake = "O";
             string char_dead_snake = "X";
@@ -54,22 +56,13 @@ namespace ConsoleApp1
             {
                 string hs_r_line = "";
                 hs_r_line = hs_read.ReadLine();
-                do
+                
+                while(hs_r_line != null)
                 {
-                    highscore.Add(hs_r_line.Split(";"));
+                    highscore.Add(hs_r_line.Split(","));
                     hs_r_line = hs_read.ReadLine();
                 }
-                while(hs_r_line != null);
             }
-
-            foreach (var item in highscore)
-            {
-                Console.WriteLine(item[0]);
-                Console.WriteLine(item[1]);
-            }
-            Console.ReadKey();
-
-            StreamWriter hs_write = new StreamWriter(@".\highscore.txt");
 
             int foodx = foodr.Next(0, mapx);
             int foody = foodr.Next(0, mapy);
@@ -275,9 +268,32 @@ namespace ConsoleApp1
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\n" + text_gameover);
-                Console.Write(text_name);
-                string name = Console.ReadLine();
-                //highscore.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(text_score_table);
+                foreach (var item in highscore)
+                {
+                    Console.WriteLine(item[0] + " : " + item[1]);
+                }
+                
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(text_score_prompt);
+
+                string save_score = Console.ReadLine();
+                if(save_score == "y" || save_score == "yes")
+                {
+                    Console.Write(text_name);
+                    string name = Console.ReadLine();
+
+                    using (StreamWriter hs_write = new StreamWriter(@".\highscore.txt"))
+                    {
+                        foreach (var item in highscore)
+                        {
+                            hs_write.WriteLine(item[0] + "," + item[1]);
+                        }
+                        hs_write.WriteLine(name + "," + snakelength);
+                    }
+                }
             }
         }
     }
