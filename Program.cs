@@ -116,7 +116,7 @@ namespace ConsoleApp1
                 Console.Write(border_bottomline);
             }
 
-            while (run)
+            while (run && !gameover)
             {
                 if (Console.KeyAvailable)
                 {
@@ -178,24 +178,49 @@ namespace ConsoleApp1
                         break;
                 }
 
-                switch (dir)                                         //irány
+                if(screen_warp)
                 {
-                    case 0:
-                        if (posx + 1 >= mapx) posx = 0;
-                        else posx++;
-                        break;
-                    case 1:
-                        if (posx <= 0) posx = mapx - 1;
-                        else posx--;
-                        break;
-                    case 2:
-                        if (posy + 1 >= mapy) posy = 0;
-                        else posy++;
-                        break;
-                    case 3:
-                        if (posy <= 0) posy = mapy - 1;
-                        else posy--;
-                        break;
+                    switch (dir)                                         //irány
+                    {
+                        case 0:
+                            if (posx + 1 >= mapx) posx = 0;
+                            else posx++;
+                            break;
+                        case 1:
+                            if (posx <= 0) posx = mapx - 1;
+                            else posx--;
+                            break;
+                        case 2:
+                            if (posy + 1 >= mapy) posy = 0;
+                            else posy++;
+                            break;
+                        case 3:
+                            if (posy <= 0) posy = mapy - 1;
+                            else posy--;
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (dir)                                         //irány
+                    {
+                        case 0:
+                            if (posx + 1 >= mapx) gameover = true;
+                            else posx++;
+                            break;
+                        case 1:
+                            if (posx <= 0) gameover = true;
+                            else posx--;
+                            break;
+                        case 2:
+                            if (posy + 1 >= mapy) gameover = true;
+                            else posy++;
+                            break;
+                        case 3:
+                            if (posy <= 0) gameover = true;
+                            else posy--;
+                            break;
+                    }
                 }
 
                 if (map[posx, posy].id == "snake")

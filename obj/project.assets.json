@@ -8,24 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\puska\\.nuget\\packages\\": {},
-    "C:\\Program Files\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Tanuló\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dokumentumok\\Code\\C#\\snake-game\\snake-game.csproj",
+      "projectUniqueName": "F:\\code\\snake-game\\snake-game.csproj",
       "projectName": "snake-game",
-      "projectPath": "C:\\Dokumentumok\\Code\\C#\\snake-game\\snake-game.csproj",
-      "packagesPath": "C:\\Users\\puska\\.nuget\\packages\\",
-      "outputPath": "C:\\Dokumentumok\\Code\\C#\\snake-game\\obj\\",
+      "projectPath": "F:\\code\\snake-game\\snake-game.csproj",
+      "packagesPath": "C:\\Users\\Tanuló\\.nuget\\packages\\",
+      "outputPath": "F:\\code\\snake-game\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\puska\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Tanuló\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
