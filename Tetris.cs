@@ -5,6 +5,11 @@ namespace GameBox
 {
     class Tetris
     {
+        struct Tetris_data
+        {
+            public int id;
+            public string color;
+        }
         public void Tetris_game()
         {
             int mapx = 10;
