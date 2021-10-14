@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>snake_game</RootNamespace>
+    <RootNamespace>GameBox</RootNamespace>
   </PropertyGroup>
 
 </Project>

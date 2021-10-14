@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\code\\snake-game\\snake-game.csproj",
-      "projectName": "snake-game",
-      "projectPath": "F:\\code\\snake-game\\snake-game.csproj",
+      "projectUniqueName": "F:\\code\\game-box\\GameBox.csproj",
+      "projectName": "GameBox",
+      "projectPath": "F:\\code\\game-box\\GameBox.csproj",
       "packagesPath": "C:\\Users\\Tanuló\\.nuget\\packages\\",
-      "outputPath": "F:\\code\\snake-game\\obj\\",
+      "outputPath": "F:\\code\\game-box\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Tanuló\\AppData\\Roaming\\NuGet\\NuGet.Config",

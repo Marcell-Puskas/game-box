@@ -2,8 +2,9 @@
 using System.IO;
 using System.Threading;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace ConsoleApp1
+namespace GameBox
 {
     struct Snake_data
     {
@@ -14,9 +15,6 @@ namespace ConsoleApp1
     {
         public void Snake_game()
         {
-            Console.Clear();
-            //Console.CursorVisible = false;
-
             //config
             int mapx = 40;
             int mapy = 20;
@@ -46,6 +44,13 @@ namespace ConsoleApp1
             int snakelength = 0;
 
             bool screen_warp = false;
+
+            string[] text_yes_prompt = {
+                "y",
+                "yes",
+                "i",
+                "igen"
+            };
 
 
             Snake_data[,] map = new Snake_data[mapx, mapy];
@@ -92,6 +97,7 @@ namespace ConsoleApp1
             }
             border_bottomline += border_bottom_right + "\n";
 
+            Console.Clear();
             Console.CursorVisible = false;
 
             while (run && !gameover)
@@ -121,7 +127,7 @@ namespace ConsoleApp1
 
                 keys.Clear();
 
-                switch (key)                                        //billentyűzet bemenet
+                switch (key)
                 {
                     case "D":
                         if (dir != 1) dir = 0;
@@ -158,7 +164,7 @@ namespace ConsoleApp1
 
                 if(screen_warp)
                 {
-                    switch (dir)                                         //irány
+                    switch (dir)
                     {
                         case 0:
                             if (posx + 1 >= mapx) posx = 0;
@@ -180,7 +186,7 @@ namespace ConsoleApp1
                 }
                 else
                 {
-                    switch (dir)                                         //irány
+                    switch (dir)
                     {
                         case 0:
                             if (posx + 1 >= mapx) gameover = true;
@@ -263,9 +269,8 @@ namespace ConsoleApp1
                 Console.ForegroundColor = ConsoleColor.White;
 
                 Console.WriteLine(text_info + "\n" + text_score + snakelength);
-                //Console.WriteLine("\n\n" + key + "\n\n" + second_key);//teszteléshez
                 screen = "";
-                Thread.Sleep(100 + 300 / (snakelength + 1));
+                Thread.Sleep(50 + 300 / (snakelength + 1));
             }
             if (gameover)
             {
@@ -283,7 +288,7 @@ namespace ConsoleApp1
                 Console.WriteLine(text_score_prompt);
 
                 string save_score = Console.ReadLine();
-                if(save_score == "y" || save_score == "yes")
+                if(text_yes_prompt.Contains(save_score))
                 {
                     Console.Write(text_name);
                     string name = Console.ReadLine();

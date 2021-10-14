@@ -37,7 +37,6 @@ G:\code\snake-game\bin\Debug\net5.0\snake-game.runtimeconfig.dev.json
 G:\code\snake-game\bin\Debug\net5.0\snake-game.dll
 G:\code\snake-game\bin\Debug\net5.0\ref\snake-game.dll
 G:\code\snake-game\bin\Debug\net5.0\snake-game.pdb
-G:\code\snake-game\obj\Debug\net5.0\snake-game.csproj.AssemblyReference.cache
 G:\code\snake-game\obj\Debug\net5.0\snake-game.GeneratedMSBuildEditorConfig.editorconfig
 G:\code\snake-game\obj\Debug\net5.0\snake-game.AssemblyInfoInputs.cache
 G:\code\snake-game\obj\Debug\net5.0\snake-game.AssemblyInfo.cs
@@ -46,3 +45,4 @@ G:\code\snake-game\obj\Debug\net5.0\snake-game.dll
 G:\code\snake-game\obj\Debug\net5.0\ref\snake-game.dll
 G:\code\snake-game\obj\Debug\net5.0\snake-game.pdb
 G:\code\snake-game\obj\Debug\net5.0\snake-game.genruntimeconfig.cache
+G:\code\snake-game\obj\Debug\net5.0\snake-game.csproj.AssemblyReference.cache

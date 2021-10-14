@@ -1,0 +1,16 @@
+F:\code\game-box\obj\Debug\net5.0\GameBox.csproj.AssemblyReference.cache
+F:\code\game-box\obj\Debug\net5.0\GameBox.GeneratedMSBuildEditorConfig.editorconfig
+F:\code\game-box\obj\Debug\net5.0\GameBox.AssemblyInfoInputs.cache
+F:\code\game-box\obj\Debug\net5.0\GameBox.AssemblyInfo.cs
+F:\code\game-box\obj\Debug\net5.0\GameBox.csproj.CoreCompileInputs.cache
+F:\code\game-box\bin\Debug\net5.0\GameBox.exe
+F:\code\game-box\bin\Debug\net5.0\GameBox.deps.json
+F:\code\game-box\bin\Debug\net5.0\GameBox.runtimeconfig.json
+F:\code\game-box\bin\Debug\net5.0\GameBox.runtimeconfig.dev.json
+F:\code\game-box\bin\Debug\net5.0\GameBox.dll
+F:\code\game-box\bin\Debug\net5.0\ref\GameBox.dll
+F:\code\game-box\bin\Debug\net5.0\GameBox.pdb
+F:\code\game-box\obj\Debug\net5.0\GameBox.dll
+F:\code\game-box\obj\Debug\net5.0\ref\GameBox.dll
+F:\code\game-box\obj\Debug\net5.0\GameBox.pdb
+F:\code\game-box\obj\Debug\net5.0\GameBox.genruntimeconfig.cache
