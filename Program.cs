@@ -7,18 +7,25 @@ namespace GameBox
     {
         static void Main(string[] args)
         {
+            bool run = true;
+
             void call_game(string call_name)
             {
                 switch(call_name)
                 {
                     case "snake":
                     Snake snake = new Snake();
-                    snake.Snake_game();
+                    run = snake.Snake_game();
                     break;
 
                     case "tetris":
                     Tetris tetris = new Tetris();
-                    tetris.Tetris_game();
+                    run = tetris.Tetris_game();
+                    break;
+
+                    case "teszt1":
+                    Teszt1 teszt1 = new Teszt1();
+                    run = teszt1.teszt1_code();
                     break;
                 }
             }
@@ -27,12 +34,14 @@ namespace GameBox
 
             string[] call_games = {
                     "snake",
-                    "tetris"
+                    "tetris",
+                    "teszt1"
             };
 
             string[] text_games = {
                     "Snake",
-                    "Tetris (még nincs kész)"
+                    "Tetris (még nincs kész)",
+                    "teszt program"
             };
 
             if(args.Length >= 2)
@@ -56,6 +65,8 @@ namespace GameBox
                 int mapx = 40;
                 int mapy = 20;
 
+                Border border = new Border();
+
                 string border_top_left = "╔";
                 string border_top = "═";
                 string border_top_right = "╗";
@@ -65,7 +76,6 @@ namespace GameBox
                 string border_vertical = "║";
 
                 string key = "";
-                bool run = true;
 
                 string[] text_title = {
                     "",
@@ -151,7 +161,7 @@ namespace GameBox
                         Console.Write(border_vertical + "\n");
                     }
 
-                    for (int cy = 0; cy < mapy - text_games.Length; cy++)
+                    for (int cy = 0; cy < mapy - text_games.Length - text_title.Length; cy++)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.Write(border_vertical);

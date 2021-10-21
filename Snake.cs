@@ -13,13 +13,13 @@ namespace GameBox
     }
     class Snake
     {
-        public void Snake_game()
+        public bool Snake_game()
         {
             //config
             int mapx = 40;
             int mapy = 20;
             int def_length = 3;
-            string text_info = "Mozgás: W A S D, kipépés: Escape";
+            string text_info = "Mozgás: W A S D, kipépés: Escape, Menü: M";
             string text_gameover = "Játék vége";
             string text_score = "Pontszám:";
             string text_name = "Írd be a neved a pontszám elmentéséhez!\nNeved: ";
@@ -74,10 +74,8 @@ namespace GameBox
             int dir = 0;
             bool run = true;
             bool gameover = false;
-            bool menu = true;
+            //bool menu = true;
             string key = "";
-            string screen = "";
-            string snsake_screen = "";
             string second_key = "";
             string current_snake_char = char_snake;
 
@@ -158,8 +156,10 @@ namespace GameBox
                         break;
 
                     case "Escape":
-                        run = false;
-                        break;
+                        return false;
+
+                    case "M":
+                        return true;
                 }
 
                 if(screen_warp)
@@ -269,7 +269,6 @@ namespace GameBox
                 Console.ForegroundColor = ConsoleColor.White;
 
                 Console.WriteLine(text_info + "\n" + text_score + snakelength);
-                screen = "";
                 Thread.Sleep(50 + 300 / (snakelength + 1));
             }
             if (gameover)
@@ -303,6 +302,7 @@ namespace GameBox
                     }
                 }
             }
+            return true;
         }
     }
 }

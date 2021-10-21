@@ -5,10 +5,49 @@ namespace GameBox
 {
     class Tetris
     {
-        public void Tetris_game()
+        struct Tetris_data
         {
+            public int id;
+            public string color;
+        }
+        public bool Tetris_game()
+        {
+            int[][,] blocks = new int[][,]
+            {
+                new int[,] { 
+                    {1, 1, 1, 1}, 
+                },
+                new int[,] { 
+                    {1, 0, 0},
+                    {1, 1, 1}
+                },
+                new int[,] {
+                    {0, 0, 1},
+                    {1, 1, 1}
+                },
+                new int[,] {
+                    {1, 1,},
+                    {1, 1}
+                },
+                new int[,] {
+                    {0, 1, 1},
+                    {1, 1, 0}
+                },
+                new int[,] {
+                    {0, 1, 0},
+                    {1, 1, 1}
+                },
+                new int[,] {
+                    {1, 1, 0},
+                    {0, 1, 1}
+                }
+            };
+
             int mapx = 10;
             int mapy = 40;
+
+            int posx = 0;
+            int posy = 0;
 
             string border_top_left = "╔";
             string border_top = "═";
@@ -17,6 +56,14 @@ namespace GameBox
             string border_bottom = "═";
             string border_bottom_right = "╝";
             string border_vertical = "║";
+
+            Random blockrandom = new Random();
+            int current_block = blockrandom.Next(0, blocks.Length - 1);
+            
+            bool run = true;
+            bool gameover = false;
+
+            Tetris_data[,] map = new Tetris_data[mapx, mapy];
 
             string border_topline = border_top_left;
             for (int cx = 0; cx <= mapx - 1; cx++)
@@ -32,9 +79,6 @@ namespace GameBox
             }
             border_bottomline += border_bottom_right + "\n";
 
-            bool run = true;
-            bool gameover = false;
-
             Console.Clear();
             while (run && !gameover)
             {
@@ -47,7 +91,21 @@ namespace GameBox
                     Console.Write(border_vertical);
                     for (int cx = 0; cx < mapx; cx++)
                     {
-                        Console.Write(" ");
+                        if(posx <= cx && cx < posx + blocks[current_block].GetLength(1) && posy <= cy && cy < posy + blocks[current_block].GetLength(0))
+                        {
+                            if (blocks[current_block][cy - posy, cx - posx] == 1)
+                            {
+                                Console.Write("X");
+                            }
+                            else
+                            {
+                                Console.Write(".");
+                            }
+                        }
+                        else
+                        {
+                            Console.Write(" ");
+                        }
                     }
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.Write(border_vertical + "\n");
@@ -56,9 +114,12 @@ namespace GameBox
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write(border_bottomline);
 
-                Console.ReadKey();
-                run = false;
+                if(Console.ReadKey().Key == ConsoleKey.Escape)
+                {
+                    run = false;
+                }
             }
+            return false;
         }
     }
 }
