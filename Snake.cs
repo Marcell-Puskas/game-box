@@ -67,7 +67,6 @@ namespace GameBox
             int dir = 0;
             bool run = true;
             bool gameover = false;
-            //bool menu = true;
             string key = "";
             string second_key = "";
             string current_snake_char = char_snake;
