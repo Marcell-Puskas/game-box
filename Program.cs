@@ -67,14 +67,6 @@ namespace GameBox
 
                 Border border = new Border();
 
-                string border_top_left = "╔";
-                string border_top = "═";
-                string border_top_right = "╗";
-                string border_bottom_left = "╚";
-                string border_bottom = "═";
-                string border_bottom_right = "╝";
-                string border_vertical = "║";
-
                 string key = "";
 
                 string[] text_title = {
@@ -83,30 +75,15 @@ namespace GameBox
                     ""
                     };
 
-                string border_topline = border_top_left;
-                for (int cx = 0; cx <= mapx - 1; cx++)
-                {
-                    border_topline += border_top;
-                }
-                border_topline += border_top_right + "\n";
-
-                string border_bottomline = border_bottom_left;
-                for (int cx = 0; cx <= mapx - 1; cx++)
-                {
-                    border_bottomline += border_bottom;
-                }
-                border_bottomline += border_bottom_right + "\n";
-
                 while(run)
                 {
-                    Console.SetCursorPosition(0, 0);
+                    Console.SetCursorPosition(1, 1);
 
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write(border_topline);
+                    border.border_print(mapx, mapy);
                     
                     for (int i = 0; i < text_title.Length; i++)
                     {
-                        Console.Write(border_vertical);
+                        Console.SetCursorPosition(1, i + 1);
                         
                         Console.Write(" ");
 
@@ -121,15 +98,12 @@ namespace GameBox
                                 Console.Write(" ");
                             }
                         }
-
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.Write(border_vertical + "\n");
                     }
 
                     for (int i = 0; i < text_games.Length; i++)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.Write(border_vertical);
+                        Console.SetCursorPosition(1, i + text_title.Length + 1);
 
                         Console.Write(" ");
 
@@ -156,15 +130,12 @@ namespace GameBox
                                 Console.Write(" ");
                             }
                         }
-
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.Write(border_vertical + "\n");
                     }
 
                     for (int cy = 0; cy < mapy - text_games.Length - text_title.Length; cy++)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.Write(border_vertical);
+                        Console.SetCursorPosition(1, cy + text_title.Length + text_games.Length + 1);
 
                         for (int cx = 0; cx < mapx; cx++)
                         {
@@ -172,11 +143,7 @@ namespace GameBox
                         }
 
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.Write(border_vertical + "\n");
                     }
-                    
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write(border_bottomline);
 
                     key = Convert.ToString(Console.ReadKey(true).Key);
 
@@ -203,6 +170,7 @@ namespace GameBox
 
                         case "Escape":
                         run = false;
+                        Console.Clear();
                         break;
                     }
                 }

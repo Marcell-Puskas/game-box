@@ -7,6 +7,7 @@ namespace GameBox
     {
         public bool teszt1_code()
         {
+            Console.Clear();
             Console.WriteLine("teszt1");
 
             int[][,] blocks = new int[][,]

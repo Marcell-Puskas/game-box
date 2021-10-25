@@ -45,7 +45,6 @@ namespace GameBox
 
             Console.SetCursorPosition(1, 1);
             Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadKey();
         }
     }
 }

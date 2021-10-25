@@ -31,14 +31,6 @@ namespace GameBox
             string char_food = "A";
             string char_background = " ";
 
-            string border_top_left = "╔";
-            string border_top = "═";
-            string border_top_right = "╗";
-            string border_bottom_left = "╚";
-            string border_bottom = "═";
-            string border_bottom_right = "╝";
-            string border_vertical = "║";
-
             int posx = 5;
             int posy = 5;
             int snakelength = 0;
@@ -55,6 +47,7 @@ namespace GameBox
 
             Snake_data[,] map = new Snake_data[mapx, mapy];
             Random foodr = new Random();
+            Border border = new Border();
             var highscore = new List<string[]>();
 
             using (StreamReader hs_read = new StreamReader(@".\highscore.txt"))
@@ -81,22 +74,10 @@ namespace GameBox
 
             var keys = new List<string>();
 
-            string border_topline = border_top_left;
-            for (int cx = 0; cx <= mapx - 1; cx++)
-            {
-                border_topline += border_top;
-            }
-            border_topline += border_top_right + "\n";
-
-            string border_bottomline = border_bottom_left;
-            for (int cx = 0; cx <= mapx - 1; cx++)
-            {
-                border_bottomline += border_bottom;
-            }
-            border_bottomline += border_bottom_right + "\n";
-
             Console.Clear();
             Console.CursorVisible = false;
+
+            border.border_print(mapx, mapy);
 
             while (run && !gameover)
             {
@@ -226,16 +207,13 @@ namespace GameBox
                 else
                     map[foodx, foody].id = "food";
 
-
-                Console.SetCursorPosition(0, 0);
-
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(border_topline);
+                
+                Console.SetCursorPosition(1, 1);
 
                 for (int cy = 0; cy < mapy; cy++)
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write(border_vertical);
+                    Console.SetCursorPosition(1, cy + 1);
                     for (int cx = 0; cx < mapx; cx++)
                     {
                         if (map[cx, cy].id == "snake")
@@ -261,13 +239,10 @@ namespace GameBox
                             Console.Write(char_background);
                         }
                     }
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write(border_vertical + "\n");
                 }
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(border_bottomline);
                 Console.ForegroundColor = ConsoleColor.White;
 
+                Console.SetCursorPosition(0, mapy + 2);
                 Console.WriteLine(text_info + "\n" + text_score + snakelength);
                 Thread.Sleep(50 + 300 / (snakelength + 1));
             }
