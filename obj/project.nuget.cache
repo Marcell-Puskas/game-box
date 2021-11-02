@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "f8Y94G8aOjeuK4xIfqb0TAnEVcL+rz5bMS5pzgDhst3jH+PDN78OjSCFqdm3TSPnq8FL5j4kBUdit6AsG5zEpA==",
+  "dgSpecHash": "4bYhcucBMP9YdxSfUQVKjz6N9SeAUFKZEyIkLdVObxeMvVIDgSPy3CzkRtEP9JJvg6bTb88F54S84cLYpnizCg==",
   "success": true,
-  "projectFilePath": "G:\\code\\game-box\\GameBox.csproj",
+  "projectFilePath": "F:\\code\\game-box\\GameBox.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
