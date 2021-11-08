@@ -50,7 +50,7 @@ namespace GameBox
                 {
                     if(args[i] == "-g" && i + 1 < args.Length)
                     {
-                        call_game(args[i + 1]);
+                        call_game(args[i + 1].ToLower());
                     }
                 }
             }

@@ -71,10 +71,10 @@ namespace GameBox
 
             border.border_print(mapx, mapy);
 
-            for (int i = 0; i < 10; i++)
+            /*for (int i = 0; i < 10; i++)
             {
                 map[5, i * 2].block = true;
-            }
+            }*/
 
             Thread key_getThread = new Thread(new ThreadStart(Key_get));
             key_getThread.Start();
@@ -172,6 +172,10 @@ namespace GameBox
                     case "d":
                     if(check_move(posx, posy + 1)) posy++;
                     break;
+
+                    case "u":
+                    
+                    break;
                 }
 
                 Screen_print();
@@ -215,6 +219,8 @@ namespace GameBox
 
                     posx = 0;
                     posy = 0;
+
+                    current_block = blockrandom.Next(0, blocks.Length - 1);
                 }
 
                 Screen_print();

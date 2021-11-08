@@ -31,6 +31,8 @@ namespace GameBox
             string char_food = "A";
             string char_background = " ";
 
+            string highscore_path = @".\highscore.txt";
+
             int posx = 5;
             int posy = 5;
             int snakelength = 0;
@@ -44,13 +46,14 @@ namespace GameBox
                 "igen"
             };
 
-
+            //create varriables
             Snake_data[,] map = new Snake_data[mapx, mapy];
             Random foodr = new Random();
             Border border = new Border();
             var highscore = new List<string[]>();
 
-            using (StreamReader hs_read = new StreamReader(@".\highscore.txt"))
+            if(File.Exists(highscore_path))
+            using (StreamReader hs_read = new StreamReader(highscore_path))
             {
                 string hs_r_line = "";
                 hs_r_line = hs_read.ReadLine();
@@ -266,7 +269,7 @@ namespace GameBox
                     Console.Write(text_name);
                     string name = Console.ReadLine();
 
-                    using (StreamWriter hs_write = new StreamWriter(@".\highscore.txt"))
+                    using (StreamWriter hs_write = new StreamWriter(highscore_path))
                     {
                         foreach (var item in highscore)
                         {
