@@ -18,7 +18,7 @@ namespace GameBox
         bool run = true;
         bool gameover = false;
         bool menu = true;
-
+        bool printing = false;
         int[][,] blocks = new int[][,]
         {
             new int[,] { 
@@ -56,7 +56,7 @@ namespace GameBox
 
         struct Tetris_data
         {
-            public int id;
+            public bool block;
             public ConsoleColor color;
         }
 
@@ -67,54 +67,87 @@ namespace GameBox
             map = new Tetris_data[mapx, mapy];
 
             Console.Clear();
+            Console.CursorVisible = false;
 
             border.border_print(mapx, mapy);
+
+            for (int i = 0; i < 10; i++)
+            {
+                map[5, i * 2].block = true;
+            }
 
             Thread key_getThread = new Thread(new ThreadStart(Key_get));
             key_getThread.Start();
             Thread logicThread = new Thread(new ThreadStart(Logic));
             logicThread.Start();
-            while(run);
+            while(run) Thread.Sleep(200);
             key_getThread.Join();
             logicThread.Join();
             return menu;
         }
         public void Screen_print()
         {
-            for (int cy = 0; cy < mapy; cy++)
+            if(!printing)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.SetCursorPosition(1, cy + 1);
-                for (int cx = 0; cx < mapx; cx++)
+                printing = true;
+                for (int cy = 0; cy < mapy; cy++)
                 {
-                    if(posx <= cx && cx < posx + blocks[current_block].GetLength(1) && posy <= cy && cy < posy + blocks[current_block].GetLength(0))
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.SetCursorPosition(1, cy + 1);
+                    for (int cx = 0; cx < mapx; cx++)
                     {
-                        if (blocks[current_block][cy - posy, cx - posx] == 1)
+                        if(posx <= cx && cx < posx + blocks[current_block].GetLength(1) && posy <= cy && cy < posy + blocks[current_block].GetLength(0))
                         {
-                            Console.Write("X");
+                            if (blocks[current_block][cy - posy, cx - posx] == 1)
+                            {
+                                Console.Write("X");
+                            }
+                            else
+                            {
+                                Console.Write(".");
+                            }
+                        }
+                        else if(map[cx, cy].block)
+                        {
+                            //Console.ForegroundColor = map[cx, cy].color;
+                            Console.Write("O");
                         }
                         else
                         {
-                            Console.Write(".");
+                            Console.Write(" ");
                         }
                     }
-                    else
-                    {
-                        Console.Write(" ");
-                    }
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                 }
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                printing = false;
             }
         }
         public void Key_get()
         {
             string key = "";
+            string move = "";
             while(run && !gameover)
             {
                 key = Convert.ToString(Console.ReadKey().Key);
 
                 switch(key)
                 {
+                    case "LeftArrow":
+                    move = "l";
+                    break;
+
+                    case "RightArrow":
+                    move = "r";
+                    break;
+
+                    case "UpArrow":
+                    move = "u";
+                    break;
+
+                    case "DownArrow":
+                    move = "d";
+                    break;
+
                     case "Escape":
                     run = false;
                     menu = false;
@@ -126,18 +159,67 @@ namespace GameBox
                     break;
                 }
 
+                switch(move)
+                {
+                    case "l":
+                    if(check_move(posx - 1, posy)) posx--;
+                    break;
+
+                    case "r":
+                    if(check_move(posx + 1, posy)) posx++;
+                    break;
+
+                    case "d":
+                    if(check_move(posx, posy + 1)) posy++;
+                    break;
+                }
+
                 Screen_print();
             }
+        }
+
+        public bool check_move(int nextX, int nextY)
+        {
+            for(int cy = 0; cy < blocks[current_block].GetLength(0); cy++)
+            {
+                for(int cx = 0; cx < blocks[current_block].GetLength(1); cx++)
+                {
+                    if(nextX < 0) return false;
+                    else if(nextX + blocks[current_block].GetLength(1) > mapx) return false;
+                    else if(nextY + blocks[current_block].GetLength(0) > mapy) return false;
+                    else if(map[cx + nextX, cy + nextY].block && blocks[current_block][cy, cx] == 1) return false;
+                }
+            }
+            return true;
         }
         public void Logic()
         {
             while(run && !gameover)
             {
-                posy += 1;
+                if(check_move(posx, posy + 1))
+                {
+                    posy += 1;
+                }
+                else
+                {
+                    for(int cy = 0; cy < blocks[current_block].GetLength(0); cy++)
+                    {
+                        for(int cx = 0; cx < blocks[current_block].GetLength(1); cx++)
+                        {
+                            if(blocks[current_block][cy, cx] == 1)
+                            {
+                                map[posx + cx, posy + cy].block = true;
+                            }
+                        }
+                    }
+
+                    posx = 0;
+                    posy = 0;
+                }
 
                 Screen_print();
 
-                Thread.Sleep(200);
+                Thread.Sleep(500);
             }
         }
     }
