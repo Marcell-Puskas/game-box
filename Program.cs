@@ -27,6 +27,11 @@ namespace GameBox
                     Teszt1 teszt1 = new Teszt1();
                     run = teszt1.teszt1_code();
                     break;
+
+                    case "minesweeper":
+                    Minesweeper minesweeper = new Minesweeper();
+                    run = minesweeper.Minesweeper_game();
+                    break;
                 }
             }
 
@@ -35,13 +40,15 @@ namespace GameBox
             string[] call_games = {
                     "snake",
                     "tetris",
-                    "teszt1"
+                    "teszt1",
+                    "minesweeper"
             };
 
             string[] text_games = {
                     "Snake",
                     "Tetris (még nincs kész)",
-                    "teszt program"
+                    "teszt program",
+                    "Aknakereső (nincs kész)"
             };
 
             if(args.Length >= 2)

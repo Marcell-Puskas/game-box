@@ -50,8 +50,16 @@ namespace GameBox
             }
         };
 
+        //int[,] block = new int[,];
+
         ConsoleColor[] block_color = {
-            
+            ConsoleColor.Blue,
+            ConsoleColor.DarkBlue,
+            ConsoleColor.DarkYellow,
+            ConsoleColor.Yellow,
+            ConsoleColor.Green,
+            ConsoleColor.DarkRed,
+            ConsoleColor.Red
         };
 
         struct Tetris_data
@@ -70,6 +78,8 @@ namespace GameBox
             Console.CursorVisible = false;
 
             border.border_print(mapx, mapy);
+
+            //int[,] block_ar = blocks[current_block];
 
             /*for (int i = 0; i < 10; i++)
             {
@@ -100,16 +110,17 @@ namespace GameBox
                         {
                             if (blocks[current_block][cy - posy, cx - posx] == 1)
                             {
+                                Console.ForegroundColor = block_color[current_block];
                                 Console.Write("X");
                             }
                             else
                             {
-                                Console.Write(".");
+                                Console.Write(" ");
                             }
                         }
                         else if(map[cx, cy].block)
                         {
-                            //Console.ForegroundColor = map[cx, cy].color;
+                            Console.ForegroundColor = map[cx, cy].color;
                             Console.Write("O");
                         }
                         else
@@ -124,6 +135,10 @@ namespace GameBox
         }
         public void Key_get()
         {
+            for (int cy = 0; cy < blocks[current_block].Length; cy++)
+            {
+
+            }
             string key = "";
             string move = "";
             while(run && !gameover)
@@ -213,6 +228,7 @@ namespace GameBox
                             if(blocks[current_block][cy, cx] == 1)
                             {
                                 map[posx + cx, posy + cy].block = true;
+                                map[posx + cx, posy + cy].color = block_color[current_block];
                             }
                         }
                     }
