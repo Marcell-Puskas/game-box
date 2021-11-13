@@ -18,19 +18,24 @@ namespace GameBox
                     run = snake.Snake_game();
                     break;
 
-                    case "tetris":
-                    Tetris tetris = new Tetris();
-                    run = tetris.Tetris_game();
-                    break;
-
-                    case "teszt1":
-                    Teszt1 teszt1 = new Teszt1();
-                    run = teszt1.teszt1_code();
+                    case "newtetris":
+                    Newtetris newtetris = new Newtetris();
+                    run = newtetris.New_tetris_game();
                     break;
 
                     case "minesweeper":
                     Minesweeper minesweeper = new Minesweeper();
                     run = minesweeper.Minesweeper_game();
+                    break;
+
+                    case "teszt1":
+                    Test1 test1 = new Test1();
+                    run = test1.test1_code();
+                    break;
+
+                    case "teszt2":
+                    Test2 test2 = new Test2();
+                    run = test2.test2_code();
                     break;
                 }
             }
@@ -39,16 +44,18 @@ namespace GameBox
 
             string[] call_games = {
                     "snake",
-                    "tetris",
-                    "teszt1",
-                    "minesweeper"
+                    "newtetris",
+                    "minesweeper",
+                    "test1",
+                    "test2"
             };
 
             string[] text_games = {
                     "Snake",
-                    "Tetris (még nincs kész)",
-                    "teszt program",
-                    "Aknakereső (nincs kész)"
+                    "Új Tetris",
+                    "Aknakereső (nincs kész)",
+                    "Teszt 1",
+                    "Teszt 2"
             };
 
             if(args.Length >= 2)
