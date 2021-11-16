@@ -36,7 +36,9 @@ namespace GameBox
             ConsoleColor.Red
         };
         const ConsoleColor full_line_color = ConsoleColor.White;
-        const ConsoleColor background_color = ConsoleColor.White;
+        const ConsoleColor background_text_color = ConsoleColor.Black;
+        const ConsoleColor background_color = ConsoleColor.Black;
+        const ConsoleColor background_color2 = ConsoleColor.Gray;
         const string char_mino = "O";
         const string char_full_line = "X";
         const string char_background = " ";
@@ -80,7 +82,7 @@ namespace GameBox
             border.border_print(mapx, mapy);
 
             points = 0;
-            speed = 500;
+            speed = 1;
             run = true;
             gameover = false;
 
@@ -207,7 +209,9 @@ namespace GameBox
                         else
                         {
                             Console.SetCursorPosition(cx + cmd_offset_x, cy + cmd_offset_y);
-                            Console.ForegroundColor = background_color;
+                            Console.ForegroundColor = background_text_color;
+                            //if(cx%2 == 0) Console.BackgroundColor = background_color;
+                            //else Console.BackgroundColor = background_color2;
                             Console.Write(char_background);
                         }
                     }
@@ -269,6 +273,7 @@ namespace GameBox
                     
                     lines_to_clear = true;
                     points++;
+                    speed++;
 
                     for (int copyy = cline; copyy >= 1; copyy--)
                             for (int copyx = 0; copyx < mapx; copyx++)
@@ -311,7 +316,7 @@ namespace GameBox
                 }
 
                 Screen_print();
-                Thread.Sleep(speed);
+                Thread.Sleep(100 + 400 / speed);
             }
         }
 

@@ -8,24 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\puska\\.nuget\\packages\\": {},
-    "C:\\Program Files\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Tanuló\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\code\\game-box\\GameBox.csproj",
+      "projectUniqueName": "F:\\code\\game-box\\GameBox.csproj",
       "projectName": "GameBox",
-      "projectPath": "G:\\code\\game-box\\GameBox.csproj",
-      "packagesPath": "C:\\Users\\puska\\.nuget\\packages\\",
-      "outputPath": "G:\\code\\game-box\\obj\\",
+      "projectPath": "F:\\code\\game-box\\GameBox.csproj",
+      "packagesPath": "C:\\Users\\Tanuló\\.nuget\\packages\\",
+      "outputPath": "F:\\code\\game-box\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\puska\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Tanuló\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -65,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
