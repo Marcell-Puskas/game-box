@@ -17,7 +17,14 @@ namespace GameBox
 
         public void Print(Screen_data[,] map)
         {
-            Console.SetCursorPosition(0, 0);
+            Border border = new Border();
+            
+            border.border_print(mapx, mapy);
+
+            Console.SetCursorPosition(1, 1);
+
+            int cmd_offset_x = 1;
+            int cmd_offset_y = 1;
             
             for (int cy = 0; cy < mapy; cy++)
             {
@@ -25,14 +32,16 @@ namespace GameBox
                 {
                     if(map[cx, cy].visible)
                     {
+                        Console.SetCursorPosition(cx + cmd_offset_x, cy + cmd_offset_y);
+                        Console.ForegroundColor = map[cx, cy].color;
                         Console.Write(map[cx, cy].screen_char);
                     }
                     else
                     {
+                        Console.SetCursorPosition(cx + cmd_offset_x, cy + cmd_offset_y);
                         Console.Write(empty_char);
                     }
                 }
-                Console.WriteLine();
             }
         }
     }

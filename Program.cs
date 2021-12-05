@@ -37,6 +37,11 @@ namespace GameBox
                     Test2 test2 = new Test2();
                     run = test2.test2_code();
                     break;
+
+                    case "pushthebox":
+                    Push_the_box push_The_Box = new Push_the_box();
+                    run = push_The_Box.Push_the_box_game();
+                    break;
                 }
             }
 
@@ -47,7 +52,8 @@ namespace GameBox
                     "newtetris",
                     "minesweeper",
                     "test1",
-                    "test2"
+                    "test2",
+                    "pushthebox"
             };
 
             string[] text_games = {
@@ -55,7 +61,8 @@ namespace GameBox
                     "Új Tetris",
                     "Aknakereső (nincs kész)",
                     "Teszt 1",
-                    "Teszt 2"
+                    "Teszt 2",
+                    "Push The Box"
             };
 
             if(args.Length >= 2)
