@@ -133,7 +133,7 @@ namespace GameBox
         
         bool Check_move(int px, int py)
         {
-            if (posx + px < 0) return false;
+            /* if (posx + px < 0) return false;
             else if (posx + px > mapx - 1) return false;
             else if (posy + py < 0) return false;
             else if (posy + py > mapy - 1) return false;
@@ -156,7 +156,7 @@ namespace GameBox
                     return true;
                 }
             }
-            else return true;
+            else  */return true;
         }
     }
 }

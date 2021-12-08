@@ -42,6 +42,11 @@ namespace GameBox
                     Push_the_box push_The_Box = new Push_the_box();
                     run = push_The_Box.Push_the_box_game();
                     break;
+
+                    case "tictactoe":
+                    TicTacToe ticTacToe = new TicTacToe();
+                    run = ticTacToe.tictactoe_game();
+                    break;
                 }
             }
 
@@ -53,7 +58,8 @@ namespace GameBox
                     "minesweeper",
                     "test1",
                     "test2",
-                    "pushthebox"
+                    "pushthebox",
+                    "tictactoe"
             };
 
             string[] text_games = {
@@ -62,7 +68,8 @@ namespace GameBox
                     "Aknakereső (nincs kész)",
                     "Teszt 1",
                     "Teszt 2",
-                    "Push The Box"
+                    "Push The Box",
+                    "Amőba"
             };
 
             if(args.Length >= 2)
