@@ -6,16 +6,34 @@ namespace GameBox
     {
         public bool tictactoe_game()
         {
-            int mapx = 3;
-            int mapy = 3;
+            const int mapx = 3;
+            const int mapy = 3;
+            const int match_len = 3;
+            const char Xchar = 'X';
+            const char Ochar = 'O';
+            const char Nchar = ' ';
 
             int sx = 0;
             int sy = 0;   
 
             char[,] tic_map = new char[mapx, mapy];
-            tic_map[0, 0] = 'X';
-            tic_map[1, 1] = 'O';
+            for (int i = 0; i < mapy; i++) for (int j = 0; j < mapx; j++) tic_map[i, j] = Nchar;
 
+            char selected = 'X';
+            char winchar = ' ';
+            char matchchar = ' ';
+
+            bool match;
+            bool win = false;
+
+            int[,,] match3 = {
+                {{0, 0}, {1, 0}, {2, 0}},
+                {{0, 0}, {0, 1}, {0, 2}},
+                {{0, 0}, {1, 1}, {2, 2}},
+                {{0, 2}, {1, 1}, {2, 0}}
+            };
+
+            int[,] match3_lengs = {{2, 0}, {0, 2}, {2, 2}, {2, 2}};
 
             bool run = true;
             ConsoleKey key = new ConsoleKey();
@@ -34,13 +52,10 @@ namespace GameBox
                             Console.BackgroundColor = ConsoleColor.White;
                             Console.ForegroundColor = ConsoleColor.Black;
                         }
-                        else
-                        {
-                            Console.BackgroundColor = ConsoleColor.Black;
-                            Console.ForegroundColor = ConsoleColor.White;
-                        }
 
                         Console.Write(tic_map[cx, cy]);
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     Console.WriteLine();
                 }
@@ -67,14 +82,55 @@ namespace GameBox
                     if(sx < mapx - 1) sx++;
                     break;
 
+                    case ConsoleKey.Spacebar:
+                    if(tic_map[sx, sy] == Nchar) 
+                    {
+                        tic_map[sx, sy] = selected;
+                        if(selected == Xchar) selected = Ochar;
+                        else selected = Xchar;
+                    }
+                    break;
+
                     case ConsoleKey.Escape:
                     return false;
 
                     case ConsoleKey.M:
                     return true;
                 }
-            }
 
+                for (int cm = 0; cm < match3.GetLength(0); cm++)
+                {
+                    for (int cy = 0; cy < mapy - match3_lengs[cm, 1]; cy++)
+                    {
+                        for (int cx = 0; cx < mapx - match3_lengs[cm, 0]; cx++)
+                        {
+                            match = true;
+                            for (int cc = 0; cc < match3.GetLength(1); cc++)
+                            {
+                                if(matchchar == Nchar) matchchar = tic_map[ cx + match3[cm, cc, 0], cy + match3[cm, cc, 1] ];
+                                else
+                                {
+                                    if (tic_map[ cx + match3[cm, cc, 0], cy + match3[cm, cc, 1] ] != matchchar)
+                                    {
+                                        match = false;
+                                    }
+                                }
+                            }
+                            if(match) 
+                            {
+                                win = true;
+                                winchar = matchchar;
+                            }
+                        }
+                    }
+                }
+                if(win) run = false;
+            }
+            if(win)
+            {
+                Console.WriteLine($"Win: {winchar}");
+                Console.ReadKey();
+            }
 
 
             return true;
